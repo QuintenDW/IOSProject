@@ -8,9 +8,9 @@
 import Foundation
 
 struct GameModel {
-    private (set) var platforms: Array<Option>
+    private (set) var platforms: Array<String>
     
-    struct Option {
-        var text: String
+    func selectPlatform(platform: String) {
+        
     }
 }

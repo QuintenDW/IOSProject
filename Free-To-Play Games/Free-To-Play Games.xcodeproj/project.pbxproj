@@ -12,6 +12,7 @@
 		7DE7CDB22AED19F2004948C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7CDB12AED19F2004948C8 /* Assets.xcassets */; };
 		7DE7CDB52AED19F2004948C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7CDB42AED19F2004948C8 /* Preview Assets.xcassets */; };
 		7DE7CDBC2AED29A2004948C8 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE7CDBB2AED29A2004948C8 /* GameModel.swift */; };
+		7DE7CDBE2AED2B29004948C8 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE7CDBD2AED2B29004948C8 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		7DE7CDB12AED19F2004948C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DE7CDB42AED19F2004948C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7DE7CDBB2AED29A2004948C8 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		7DE7CDBD2AED2B29004948C8 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				7DE7CDAD2AED19EF004948C8 /* Free_To_Play_GamesApp.swift */,
 				7DE7CDAF2AED19EF004948C8 /* ContentView.swift */,
 				7DE7CDBB2AED29A2004948C8 /* GameModel.swift */,
+				7DE7CDBD2AED2B29004948C8 /* GameViewModel.swift */,
 				7DE7CDB12AED19F2004948C8 /* Assets.xcassets */,
 				7DE7CDB32AED19F2004948C8 /* Preview Content */,
 			);
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE7CDBE2AED2B29004948C8 /* GameViewModel.swift in Sources */,
 				7DE7CDB02AED19EF004948C8 /* ContentView.swift in Sources */,
 				7DE7CDAE2AED19EF004948C8 /* Free_To_Play_GamesApp.swift in Sources */,
 				7DE7CDBC2AED29A2004948C8 /* GameModel.swift in Sources */,

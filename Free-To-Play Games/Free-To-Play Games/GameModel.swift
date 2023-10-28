@@ -9,8 +9,8 @@ import Foundation
 
 struct GameModel {
     private (set) var platforms: Array<String>
-    
-    func selectPlatform(platform: String) {
-        
+    private (set) var selectedPlatform: String = "PC"
+    mutating func selectPlatform(platform: String) {
+        selectedPlatform = platform
     }
 }

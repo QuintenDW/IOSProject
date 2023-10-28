@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-class GameViewModel {
+class GameViewModel: ObservableObject {
     private static let platforms = ["PC","Playstation","Xbox"]
-    private var GameOptions = createGameOptions()
+    @Published private var GameOptions = createGameOptions()
     
     var platforms: Array<String> {
         return GameOptions.platforms
@@ -18,6 +18,7 @@ class GameViewModel {
     func selectPlatform(platform: String) {
         GameOptions.selectPlatform(platform: platform)
     }
+    
     
     private static func createGameOptions() -> GameModel {
         return GameModel(platforms: platforms)

@@ -8,7 +8,7 @@
 import Foundation
 
 enum Platform: String,CaseIterable {
-    case PC
-    case Playstation
-    case Xbox
+    case pc
+    case browser
+    case all
 }

@@ -22,5 +22,5 @@ struct PlatformOption: View {
 }
 
 #Preview {
-    PlatformOption(Platform.PC,GameViewModel())
+    PlatformOption(Platform.pc,GameViewModel())
 }

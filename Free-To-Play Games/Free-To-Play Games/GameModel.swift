@@ -9,7 +9,7 @@ import Foundation
 
 struct GameModel {
     private (set) var platforms: Array<Platform>
-    private (set) var selectedPlatform: Platform = Platform.PC
+    private (set) var selectedPlatform: Platform = Platform.pc
     
     init() {
         platforms = []

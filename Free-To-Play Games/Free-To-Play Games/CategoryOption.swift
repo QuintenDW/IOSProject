@@ -14,7 +14,7 @@ struct CategoryOption: View {
             let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
             base.strokeBorder(lineWidth: Constants.border)
                 .background(base.fill(.green))
-                .overlay(CategoryOverlay(category: category))
+            CategoryOverlay(category: category).padding(20)
         }
     }
     private struct Constants {
@@ -27,8 +27,8 @@ struct CategoryOverlay: View {
     var category: Category
     var body: some View {
         VStack {
-            Image(systemName: "poweroutlet.type.b.fill").resizable().scaledToFit().aspectRatio(3,contentMode: .fit).padding()
-            Text(category.rawValue.uppercased()).font(.largeTitle).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            Image(systemName: "poweroutlet.type.b.fill").resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
+            Text(category.rawValue.uppercased()).font(.system(size: 50)).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).minimumScaleFactor(0.01).aspectRatio(1,contentMode: .fit)
         }.colorInvert()
     }
 }

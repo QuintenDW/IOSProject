@@ -15,7 +15,8 @@ struct ContentView: View {
             Text("Welkom bij de \nFree-To-Play games lijst").font(.largeTitle).padding().multilineTextAlignment(.center)
             Image(systemName: "gamecontroller.fill").imageScale(.large).font(.largeTitle)
             Spacer()
-            platformOptions
+            //platformOptions
+            categoryOptions
             Spacer()
         }
     }
@@ -30,7 +31,16 @@ struct ContentView: View {
                 }
             }
         }
-
+    }
+    private var categoryOptions: some View {
+        ScrollView(.horizontal,showsIndicators: true) {
+            HStack(spacing:5) {
+                CategoryOption(category: Category.mmorpg).aspectRatio(2/3,contentMode: .fit)
+                CategoryOption(category: Category.moba).aspectRatio(2/3,contentMode: .fit)
+                CategoryOption(category: Category.moba).aspectRatio(2/3,contentMode: .fit)
+            }.padding([.vertical],50)
+        }
+        
     }
 }
 

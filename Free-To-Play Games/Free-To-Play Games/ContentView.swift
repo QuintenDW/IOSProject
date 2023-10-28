@@ -25,7 +25,7 @@ let options = ["PC","Playstation","Xbox"]
     var optionsList: some View {
         VStack {
             Text("Selecteer op welk platform je speelt").font(.title2).padding()
-            LazyVGrid(columns: [GridItem(),GridItem(),GridItem()],spacing: 0) {
+            LazyVGrid(columns: [GridItem(),GridItem(),GridItem()]) {
                 ForEach(options.indices, id: \.self) {
                     index in Option(text: options[index]).aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                 }

@@ -24,7 +24,9 @@ class GameViewModel: ObservableObject {
     func selectCategory(_ category: Category) {
         GameOptions.selectCategory(category)
     }
-    
+    var selectedCategory: Category {
+        return GameOptions.selectedCategory
+    }
     private static func createGameOptions() -> GameModel {
         return GameModel()
     }

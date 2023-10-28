@@ -36,7 +36,9 @@ struct ContentView: View {
         ScrollView(.horizontal,showsIndicators: true) {
             LazyHStack(spacing:5) {
                 ForEach(gameLogic.categories.indices, id: \.self) {
-                    index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit)
+                    index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit).onTapGesture {
+                        gameLogic.selectCategory(gameLogic.categories[index])
+                    }
                 }
             }.padding([.vertical],50)
         }

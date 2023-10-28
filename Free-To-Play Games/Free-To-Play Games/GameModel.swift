@@ -8,9 +8,16 @@
 import Foundation
 
 struct GameModel {
-    private (set) var platforms: Array<String>
-    private (set) var selectedPlatform: String = "PC"
-    mutating func selectPlatform(platform: String) {
+    private (set) var platforms: Array<Platform>
+    private (set) var selectedPlatform: Platform = Platform.PC
+    
+    init() {
+        platforms = []
+        for platform in Platform.allCases {
+            platforms.append(platform)
+        }
+    }
+    mutating func selectPlatform(_ platform: Platform) {
         selectedPlatform = platform
     }
 }

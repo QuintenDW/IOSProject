@@ -34,15 +34,15 @@ struct ContentView: View {
     }
 }
 struct Option: View {
-    var text: String = ""
+    var platform: Platform
     var gameLogic: GameViewModel
-    init(_ text: String,_ gameLogic:GameViewModel) {
-        self.text = text
+    init(_ platform: Platform,_ gameLogic:GameViewModel) {
+        self.platform = platform
         self.gameLogic = gameLogic
     }
     var body: some View {
-        Button(text) {
-            gameLogic.selectPlatform(platform: text)
+        Button(platform.rawValue) {
+            gameLogic.selectPlatform(platform: platform)
         }.buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
     }
 }

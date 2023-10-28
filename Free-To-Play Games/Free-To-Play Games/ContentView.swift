@@ -34,10 +34,10 @@ struct ContentView: View {
     }
     private var categoryOptions: some View {
         ScrollView(.horizontal,showsIndicators: true) {
-            HStack(spacing:5) {
-                CategoryOption(category: Category.mmorpg).aspectRatio(2/3,contentMode: .fit)
-                CategoryOption(category: Category.moba).aspectRatio(2/3,contentMode: .fit)
-                CategoryOption(category: Category.moba).aspectRatio(2/3,contentMode: .fit)
+            LazyHStack(spacing:5) {
+                ForEach(gameLogic.categories.indices, id: \.self) {
+                    index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit)
+                }
             }.padding([.vertical],50)
         }
         

@@ -16,7 +16,7 @@ struct PlatformOption: View {
     }
     var body: some View {
         Button(platform.rawValue) {
-            gameLogic.selectPlatform(platform: platform)
+            gameLogic.selectPlatform(platform)
         }.buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
     }
 }

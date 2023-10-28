@@ -13,11 +13,17 @@ class GameViewModel: ObservableObject {
     var platforms: Array<Platform> {
         return GameOptions.platforms
     }
+    var categories: Array<Category> {
+        return GameOptions.categories
+    }
     
-    func selectPlatform(platform: Platform) {
+    func selectPlatform(_ platform: Platform) {
         GameOptions.selectPlatform(platform)
     }
     
+    func selectCategory(_ category: Category) {
+        GameOptions.selectCategory(category)
+    }
     
     private static func createGameOptions() -> GameModel {
         return GameModel()

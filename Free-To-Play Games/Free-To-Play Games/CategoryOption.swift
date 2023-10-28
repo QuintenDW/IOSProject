@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CategoryOption: View {
     var category: Category
+    init(_ category: Category) {
+        self.category = category
+    }
     var body: some View {
         ZStack {
             let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
@@ -34,5 +37,5 @@ struct CategoryOverlay: View {
 }
 
 #Preview {
-    CategoryOption(category: Category.pve)
+    CategoryOption(Category.pve)
 }

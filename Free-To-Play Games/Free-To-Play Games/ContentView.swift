@@ -10,23 +10,24 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HStack {
-            option(text: "PC")
-            option(text: "Playstation")
-            option(text: "Xbox")
+            Option(text: "PC")
+            Option(text: "Playstation")
+            Option(text: "Xbox")
         }
         
     }
 }
-struct option: View {
+struct Option: View {
     var text: String = ""
     var body: some View {
         Button(action: {
             
         }) {
             Text(text)
-        }.buttonStyle(.bordered)
+        }.buttonStyle(.borderedProminent).tint(.green).padding()
     }
 }
+
 
 #Preview {
     ContentView()

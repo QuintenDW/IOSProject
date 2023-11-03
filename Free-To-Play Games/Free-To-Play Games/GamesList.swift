@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-class GamesOverview: ObservableObject {
+class GamesList: ObservableObject {
     @Published private (set) var games: [Game]
     
-    init(games: [Game]) {
+    init() {
         self.games = Game.builtins() //initializes with pre-defined games for testing
     }
     

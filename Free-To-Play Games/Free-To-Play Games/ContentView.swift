@@ -18,9 +18,20 @@ struct ContentView: View {
                 Spacer()
                 PlatformSelector()
                 Spacer()
+                GoToFavorites
             }
             
         }
+    }
+    private var GoToFavorites: some View {
+        HStack {
+            NavigationLink(value: "favorites") {
+                Text("Ga naar favorieten")
+            }
+        }.navigationDestination(for: String.self) { value in
+            FavoritesListView()
+        }
+      
     }
     
 }

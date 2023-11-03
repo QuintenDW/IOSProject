@@ -12,7 +12,11 @@ struct FavoritesListView: View {
     @EnvironmentObject var gamesList: GamesList
     var body: some View {
         List(gamesList.favorites) { game in
-            Text(game.name)
+            NavigationLink(value: game) {
+                Text(game.name)
+            }
+        }.navigationDestination(for: Game.self) { game in
+            GamesListDetail(game: game).padding(20)
         }
     }
 }

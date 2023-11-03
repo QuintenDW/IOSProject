@@ -7,15 +7,11 @@
 
 import SwiftUI
 
-struct GamesOverview: View {
-    var body: some View {
-       // List() { game in
-         //   Text(game.name)
-        //}
-        Text("ee")
+class GamesOverview: ObservableObject {
+    @Published private (set) var games: [Game]
+    
+    init(games: [Game]) {
+        self.games = Game.builtins() //initializes with pre-defined games for testing
     }
-}
-
-#Preview {
-    GamesOverview()
+    
 }

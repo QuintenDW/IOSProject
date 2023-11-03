@@ -22,6 +22,7 @@ struct GamesListView: View {
 }
 
 struct GamesListDetail: View {
+    @EnvironmentObject var gamesList: GamesList
     let game: Game
     
     var body: some View {
@@ -38,11 +39,20 @@ struct GamesListDetail: View {
         }
         .navigationTitle("Details game")
         .toolbar {
-            Button {
-                //favorite
-            } label: {
-                Image(systemName: "heart.fill")
+            if (!gamesList.contains(agame: game)) {
+                Button {
+                    gamesList.addFavorite(game: game)
+                } label: {
+                    Image(systemName: "bookmark.fill")
+                }
+            } else {
+                Button {
+                    gamesList.removeFavorite(game: game)
+                } label: {
+                    Image(systemName: "bookmark.slash.fill")
+                }
             }
+            
         }
     }
     

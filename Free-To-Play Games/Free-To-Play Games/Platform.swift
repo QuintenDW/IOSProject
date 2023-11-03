@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Platform: String,CaseIterable {
+enum Platform: String,CaseIterable,Codable {
     case pc
     case browser
     case all

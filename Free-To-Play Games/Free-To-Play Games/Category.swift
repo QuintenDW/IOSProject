@@ -9,7 +9,7 @@ import Foundation
 
 import Foundation
 
-enum Category: String,CaseIterable {
+enum Category: String,CaseIterable,Codable {
     case shooter
     case mmorpg
     case strategy

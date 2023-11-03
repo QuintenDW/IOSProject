@@ -11,13 +11,15 @@ struct ContentView: View {
     @EnvironmentObject var gameLogic: OptionsStore
     var body: some View {
         VStack(alignment: .center) {
-            Text("Welkom bij de \nFree-To-Play games lijst").font(.largeTitle).padding().multilineTextAlignment(.center)
-            Image(systemName: "gamecontroller.fill").imageScale(.large).font(.largeTitle)
-            Spacer()
+
             NavigationStack {
+                Text("Welkom bij de \nFree-To-Play games lijst").font(.largeTitle).padding().multilineTextAlignment(.center)
+                Image(systemName: "gamecontroller.fill").imageScale(.large).font(.largeTitle)
+                Spacer()
                 PlatformSelector()
+                Spacer()
             }
-            Spacer()
+            
         }
     }
     
@@ -27,5 +29,5 @@ struct ContentView: View {
 
 #Preview {
     
-    ContentView().environmentObject(OptionsStore())
+    ContentView().environmentObject(OptionsStore()).environmentObject(GamesList())
 }

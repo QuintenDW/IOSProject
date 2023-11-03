@@ -7,15 +7,20 @@
 
 import SwiftUI
 
-struct GameOverviewView: View {
-    @ObservedObject var gamesList: GamesList
+struct GamesListView: View {
+    @EnvironmentObject var gamesList: GamesList
     var body: some View {
         List(gamesList.games) { game in
-            Text(game.name)
+            NavigationLink(value: game) {
+                Text(game.name)
+            }
+            
+        }.navigationDestination(for: Game.self) { game in
+            //Text(game.description)
         }
     }
 }
 
 #Preview {
-    GameOverviewView(gamesList: GamesList())
+    GamesListView().environmentObject(GamesList())
 }

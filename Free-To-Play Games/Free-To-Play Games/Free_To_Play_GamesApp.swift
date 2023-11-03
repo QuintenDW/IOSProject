@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct Free_To_Play_GamesApp: App {
     @StateObject var gameLogic = OptionsStore()
+    @StateObject var gameList = GamesList()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(gameLogic)
+            ContentView().environmentObject(gameLogic).environmentObject(gameList)
         }
     }
 }

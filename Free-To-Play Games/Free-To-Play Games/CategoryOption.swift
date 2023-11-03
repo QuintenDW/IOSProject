@@ -29,10 +29,12 @@ struct CategoryOption: View {
 struct CategoryOverlay: View {
     var category: Category
     var body: some View {
-        VStack {
-            Image(systemName: "poweroutlet.type.b.fill").resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
-            Text(category.rawValue.uppercased()).font(.system(size: 50)).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).minimumScaleFactor(0.01).aspectRatio(1,contentMode: .fit)
-        }.colorInvert()
+        NavigationLink(value: category) {
+            VStack {
+                Image(systemName: "poweroutlet.type.b.fill").resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
+                Text(category.rawValue.uppercased()).font(.system(size: 50)).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).minimumScaleFactor(0.01).aspectRatio(1,contentMode: .fit)
+            }.tint(.white)
+        }
     }
 }
 

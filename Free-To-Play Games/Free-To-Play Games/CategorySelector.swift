@@ -17,7 +17,12 @@ struct CategorySelector: View {
                         gameLogic.selectCategory(gameLogic.categories[index])
                     }
                 }
-            }.padding([.vertical],50)
+
+            }
+            .padding([.vertical],50)
+            .navigationDestination(for: Category.self) { value in
+                Text("test")
+            }
         }
     }
 }

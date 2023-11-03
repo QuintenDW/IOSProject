@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeScreen: View {
+struct PlatformSelector: View {
     
     @EnvironmentObject var gameLogic: GameViewModel
     var body: some View {
@@ -23,5 +23,5 @@ struct HomeScreen: View {
 }
 
 #Preview {
-    HomeScreen().environmentObject(GameViewModel())
+    PlatformSelector().environmentObject(GameViewModel())
 }

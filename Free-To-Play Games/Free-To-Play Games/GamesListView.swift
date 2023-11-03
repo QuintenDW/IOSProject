@@ -35,7 +35,15 @@ struct GamesListDetail: View {
             Text(game.developer)
             Text("Platform").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
             Text(game.platform.rawValue)
-        }.navigationTitle("Details game")
+        }
+        .navigationTitle("Details game")
+        .toolbar {
+            Button {
+                //favorite
+            } label: {
+                Image(systemName: "heart.fill")
+            }
+        }
     }
     
 }

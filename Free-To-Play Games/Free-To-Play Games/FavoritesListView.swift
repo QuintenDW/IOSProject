@@ -11,13 +11,18 @@ import SwiftUI
 struct FavoritesListView: View {
     @EnvironmentObject var gamesList: GamesList
     var body: some View {
-        List(gamesList.favorites) { game in
-            NavigationLink(value: game) {
-                Text(game.name)
+        if gamesList.favorites.isEmpty {
+            Text("U hebt momenteel geen favorieten").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+        } else {
+            List(gamesList.favorites) { game in
+                NavigationLink(value: game) {
+                    Text(game.name)
+                }
+            }.navigationDestination(for: Game.self) { game in
+                GamesListDetail(game: game).padding(20)
             }
-        }.navigationDestination(for: Game.self) { game in
-            GamesListDetail(game: game).padding(20)
         }
+  
     }
 }
 

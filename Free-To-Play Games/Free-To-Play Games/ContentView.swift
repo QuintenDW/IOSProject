@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var gameLogic: GameViewModel
+    @EnvironmentObject var gameLogic: OptionsStore
     var body: some View {
         VStack(alignment: .center) {
             Text("Welkom bij de \nFree-To-Play games lijst").font(.largeTitle).padding().multilineTextAlignment(.center)
@@ -27,5 +27,5 @@ struct ContentView: View {
 
 #Preview {
     
-    ContentView().environmentObject(GameViewModel())
+    ContentView().environmentObject(OptionsStore())
 }

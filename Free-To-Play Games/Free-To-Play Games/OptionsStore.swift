@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class GameViewModel: ObservableObject {
+class OptionsStore: ObservableObject {
     @Published private var GameOptions = createGameOptions()
     
     var platforms: Array<Platform> {
@@ -27,7 +27,7 @@ class GameViewModel: ObservableObject {
     var selectedCategory: Category {
         return GameOptions.selectedCategory
     }
-    private static func createGameOptions() -> GameModel {
-        return GameModel()
+    private static func createGameOptions() -> Options {
+        return Options()
     }
 }

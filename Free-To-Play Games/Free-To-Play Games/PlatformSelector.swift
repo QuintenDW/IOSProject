@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlatformSelector: View {
     
-    @EnvironmentObject var gameLogic: GameViewModel
+    @EnvironmentObject var gameLogic: OptionsStore
     var body: some View {
         VStack {
             Text("Selecteer op welk platform je speelt").font(.title2).padding()
@@ -26,5 +26,5 @@ struct PlatformSelector: View {
 }
 
 #Preview {
-    PlatformSelector().environmentObject(GameViewModel())
+    PlatformSelector().environmentObject(OptionsStore())
 }

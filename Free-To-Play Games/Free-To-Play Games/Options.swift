@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameModel {
+struct Options {
     private (set) var platforms: Array<Platform>
     private (set) var selectedPlatform: Platform = Platform.pc
     private (set) var categories: Array<Category>

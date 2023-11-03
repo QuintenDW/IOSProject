@@ -14,9 +14,12 @@ struct PlatformSelector: View {
         VStack {
             Text("Selecteer op welk platform je speelt").font(.title2).padding()
             LazyVGrid(columns: [GridItem(),GridItem(),GridItem()],spacing: 0) {
-                ForEach(gameLogic.platforms.indices, id: \.self) {
-                    index in PlatformOption(gameLogic.platforms[index],gameLogic).aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).padding(1)
-                }
+                ForEach(gameLogic.platforms.indices, id: \.self) {index in
+                    PlatformOption(gameLogic.platforms[index]).aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/).padding(1)
+                    }
+                    
+            }.navigationDestination(for: Platform.self) { value in
+                CategorySelector()
             }
         }
     }

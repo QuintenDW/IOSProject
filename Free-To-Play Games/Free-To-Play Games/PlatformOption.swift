@@ -9,18 +9,21 @@ import SwiftUI
 
 struct PlatformOption: View {
     var platform: Platform
-    var gameLogic: GameViewModel
-    init(_ platform: Platform,_ gameLogic:GameViewModel) {
+    @EnvironmentObject var gameLogic: GameViewModel
+    init(_ platform: Platform) {
         self.platform = platform
-        self.gameLogic = gameLogic
     }
+    //NavigationLink works like button
     var body: some View {
-        Button(platform.rawValue) {
-            gameLogic.selectPlatform(platform)
+        NavigationLink(value: platform) {
+            Text(platform.rawValue)
         }.buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
+            .onTapGesture {
+                gameLogic.selectPlatform(platform)
+            }
     }
 }
 
 #Preview {
-    PlatformOption(Platform.pc,GameViewModel())
+    PlatformOption(Platform.pc).environmentObject(GameViewModel())
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GamesList: ObservableObject {
-    @Published private (set) var games: [Game]
+    @Published var games: Games = .none //holds current state of retrieving games progress
     @Published private (set) var favorites: [Game] = [] {
         didSet {
             save()
@@ -18,9 +18,40 @@ class GamesList: ObservableObject {
         if let data = try? Data(contentsOf: saveURL), let savedFavorites = try? JSONDecoder().decode([Game].self, from: data) {
             favorites = savedFavorites
         }
-        self.games = Game.builtins() //initializes with pre-defined games for testing
     }
     private let saveURL: URL = URL.documentsDirectory.appendingPathComponent("Saved.favorites")
+    
+    func getGames(platform: Platform,category: Category) {
+        Task {
+            await fetchData(selectedPlatform:platform,selectedCategory:category)
+        }
+    }
+    
+    @MainActor
+    func fetchData(selectedPlatform: Platform,selectedCategory: Category) async {
+            let url = URL(string:"https://www.freetogame.com/api/games?platform=\(selectedPlatform.rawValue.lowercased())&category=\(selectedCategory.rawValue.lowercased())")!
+            //let url = URL(string:"https://www.freetogame.com/api/games?platform=pc&category=shooter")!
+            games = .fetching(url)
+            do {
+                games = .found(try await fetchGames(from: url))
+            } catch {
+                games = .failed("Kan de games niet vinden \(error.localizedDescription)")
+            }
+        
+    }
+    //Function to get games from api
+    private func fetchGames(from url: URL) async throws -> [Game] {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        if let games = try? JSONDecoder().decode([Game].self, from: data){
+            return games
+        } else {
+            throw FetchError.badGamesData
+        }
+    }
+    
+    enum FetchError: Error {
+        case badGamesData
+    }
     
     func addFavorite(game: Game) {
         favorites.append(game)
@@ -42,5 +73,34 @@ class GamesList: ObservableObject {
             print("Error during save of favorites \(error.localizedDescription)")
         }
 
+    }
+    
+    //State machine for retrieving games
+    enum Games {
+        case none
+        case fetching(URL)
+        case found([Game])
+        case failed(String)
+        
+        var gamesList: [Game]? {
+            switch self {
+            case .found(let games): return games
+            default: return nil
+            }
+        }
+        var fetchedURL: URL? {
+            switch self {
+            case .fetching(let url): return url
+            default: return nil
+            }
+        }
+        var isFetching: Bool { fetchedURL != nil }
+        
+        var failedReason: String? {
+            switch self {
+            case .failed(let reason): return reason
+            default: return nil
+            }
+        }
     }
 }

@@ -10,15 +10,21 @@ import SwiftUI
 struct GamesListView: View {
     @EnvironmentObject var gamesList: GamesList
     var body: some View {
-        List(gamesList.games) { game in
-            NavigationLink(value: game) {
-                Text(game.name)
-            }
-            
-        }.navigationDestination(for: Game.self) { game in
-            GamesListDetail(game: game).padding(20)
+        if gamesList.games.isFetching {
+            ProgressView()
         }
-    }
+        if let list = gamesList.games.gamesList {
+            List(list){ game in
+                NavigationLink(value: game) {
+                    Text(game.title)
+                }
+                
+            }.navigationDestination(for: Game.self) { game in
+                GamesListDetail(game: game).padding(20)
+            }
+        }
+        }
+
 }
 
 

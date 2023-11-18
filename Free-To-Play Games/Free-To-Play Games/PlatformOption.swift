@@ -20,6 +20,7 @@ struct PlatformOption: View {
         }.buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
             .onTapGesture {
                 gameLogic.selectPlatform(platform)
+                
             }
     }
 }

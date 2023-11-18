@@ -14,8 +14,12 @@ struct CategorySelector: View {
         ScrollView(.horizontal,showsIndicators: true) {
             LazyHStack(spacing:5) {
                 ForEach(gameLogic.categories.indices, id: \.self) {
-                    index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit).onTapGesture {
+                    index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit)
+                        .onTapGesture
+                    {
                         gameLogic.selectCategory(gameLogic.categories[index])
+                        gamesList.getGames(platform: gameLogic.selectedPlatform, category: gameLogic.selectedCategory)
+                        
                     }
                 }
 

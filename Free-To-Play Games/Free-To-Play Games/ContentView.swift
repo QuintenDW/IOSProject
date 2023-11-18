@@ -16,6 +16,7 @@ struct ContentView: View {
                 Text("Welkom bij de \nFree-To-Play games lijst").font(.largeTitle).padding().multilineTextAlignment(.center)
                 Image(systemName: "gamecontroller.fill").imageScale(.large).font(.largeTitle)
                 Spacer()
+                
                 PlatformSelector()
                 Spacer()
                 GoToFavorites

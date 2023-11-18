@@ -16,7 +16,7 @@ struct FavoritesListView: View {
         } else {
             List(gamesList.favorites) { game in
                 NavigationLink(value: game) {
-                    Text(game.name)
+                    Text(game.title)
                 }
             }.navigationDestination(for: Game.self) { game in
                 GamesListDetail(game: game).padding(20)

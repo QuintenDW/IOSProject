@@ -17,12 +17,17 @@ class OptionsStore: ObservableObject {
         return GameOptions.categories
     }
     
+    
     func selectPlatform(_ platform: Platform) {
         GameOptions.selectPlatform(platform)
     }
     
     func selectCategory(_ category: Category) {
         GameOptions.selectCategory(category)
+    }
+    
+    var selectedPlatform: Platform {
+        return GameOptions.selectedPlatform
     }
     var selectedCategory: Category {
         return GameOptions.selectedCategory

@@ -16,18 +16,14 @@ struct CategorySelector: View {
             LazyHStack(spacing:5) {
                 ForEach(gameLogic.categories.indices, id: \.self) {
                     index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit)
-                        .onTapGesture
-                    {
-                        gameLogic.selectCategory(gameLogic.categories[index])
-                        gamesList.getGames(platform: gameLogic.selectedPlatform, category: gameLogic.selectedCategory)
-                        
-                    }
                 }
 
             }
             .padding([.vertical],50)
             .navigationDestination(for: Category.self) { value in
                 GamesListView(platform: platform, category: value)
+            }.onAppear() {
+                gamesList.reset()
             }
         }
     }

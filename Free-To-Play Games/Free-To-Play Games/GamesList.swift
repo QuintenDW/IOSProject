@@ -27,6 +27,11 @@ class GamesList: ObservableObject {
         }
     }
     
+    //used when user goes back and selects different platform/category
+    func reset() {
+        games = .none
+    }
+    
     @MainActor
     func fetchData(selectedPlatform: Platform,selectedCategory: Category) async {
             let url = URL(string:"https://www.freetogame.com/api/games?platform=\(selectedPlatform.rawValue.lowercased())&category=\(selectedCategory.rawValue.lowercased())")!

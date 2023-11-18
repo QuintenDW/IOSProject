@@ -27,7 +27,7 @@ struct CategorySelector: View {
             }
             .padding([.vertical],50)
             .navigationDestination(for: Category.self) { value in
-                GamesListView()
+                GamesListView(platform: platform, category: value)
             }
         }
     }

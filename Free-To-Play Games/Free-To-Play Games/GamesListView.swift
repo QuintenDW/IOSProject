@@ -14,16 +14,16 @@ struct GamesListView: View {
     var category: Category
     var body: some View {
         if case .none = gamesList.games {
-            Button(action: {
-                gamesList.getGames(platform: platform, category: category)
-            },label: {
-                VStack {
-                    Text("Haal games op met")
-                    Text("Categorie  \(category.rawValue)")
-                    Text("platform \(platform.rawValue)")
-                }
+            VStack(spacing: 20) {
+                Text("Geselecteerde categorie:  \(category.rawValue)").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
+                Text("Geselecteerde platform: \(platform.rawValue)").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
+                Button(action: {
+                    gamesList.getGames(platform: platform, category: category)
+                },label: {
+                    Text("Haal games")
+                }).buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
+            }
 
-            })
         }
         if gamesList.games.isFetching {
             ProgressView()

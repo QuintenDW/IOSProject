@@ -18,10 +18,6 @@ struct PlatformOption: View {
         NavigationLink(value: platform) {
             Text(platform.rawValue)
         }.buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
-            .onTapGesture {
-                gameLogic.selectPlatform(platform)
-                
-            }
     }
 }
 

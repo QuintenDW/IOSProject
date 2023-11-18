@@ -19,7 +19,7 @@ struct PlatformSelector: View {
                     }
                     
             }.navigationDestination(for: Platform.self) { value in
-                CategorySelector()
+                CategorySelector(platform: value)
             }
         }
     }

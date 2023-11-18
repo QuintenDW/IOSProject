@@ -10,6 +10,7 @@ import SwiftUI
 struct CategorySelector: View {
     @EnvironmentObject var gameLogic: OptionsStore
     @EnvironmentObject var gamesList: GamesList
+    var platform: Platform
     var body: some View {
         ScrollView(.horizontal,showsIndicators: true) {
             LazyHStack(spacing:5) {
@@ -33,5 +34,5 @@ struct CategorySelector: View {
 }
 
 #Preview {
-    CategorySelector().environmentObject(OptionsStore()).environmentObject(GamesList())
+    CategorySelector(platform: Platform.pc).environmentObject(OptionsStore()).environmentObject(GamesList())
 }

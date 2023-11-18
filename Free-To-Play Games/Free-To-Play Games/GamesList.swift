@@ -30,7 +30,6 @@ class GamesList: ObservableObject {
     @MainActor
     func fetchData(selectedPlatform: Platform,selectedCategory: Category) async {
             let url = URL(string:"https://www.freetogame.com/api/games?platform=\(selectedPlatform.rawValue.lowercased())&category=\(selectedCategory.rawValue.lowercased())")!
-            //let url = URL(string:"https://www.freetogame.com/api/games?platform=pc&category=shooter")!
             games = .fetching(url)
             do {
                 games = .found(try await fetchGames(from: url))

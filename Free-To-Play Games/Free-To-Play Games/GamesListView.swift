@@ -9,7 +9,15 @@ import SwiftUI
 
 struct GamesListView: View {
     @EnvironmentObject var gamesList: GamesList
+    @EnvironmentObject var gameLogic: OptionsStore
     var body: some View {
+        if case .none = gamesList.games {
+            Button(action: {
+                gamesList.getGames(platform: gameLogic.selectedPlatform, category: gameLogic.selectedCategory)
+            },label: {
+                Text("Haal games op met categorie \(gameLogic.selectedCategory.rawValue) en platform \(gameLogic.selectedPlatform.rawValue)")
+            })
+        }
         if gamesList.games.isFetching {
             ProgressView()
         }

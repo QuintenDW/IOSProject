@@ -8,15 +8,23 @@
 import SwiftUI
 //Viewmodel
 class GamesList: ObservableObject {
-    @Published var games: Games = .none //holds current state of retrieving games progress
-    @Published private (set) var favorites: [Game] = [] {
+    
+    @Published private var favoriteGames = FavoriteGames() {
         didSet {
             save()
         }
     }
+    @Published var games: Games = .none //holds current state of retrieving games progress
+    
+    
+    var userFavorites: [Game] {
+        favoriteGames.favorites
+    }
+    //Loads saved favorites automatically
     init() {
-        if let data = try? Data(contentsOf: saveURL), let savedFavorites = try? JSONDecoder().decode([Game].self, from: data) {
-            favorites = savedFavorites
+        if  let data = try? Data(contentsOf: saveURL),
+            let savedFavorites = try? JSONDecoder().decode(FavoriteGames.self, from: data) {
+            favoriteGames = savedFavorites
         }
     }
     private let saveURL: URL = URL.documentsDirectory.appendingPathComponent("Saved.favorites")
@@ -43,7 +51,10 @@ class GamesList: ObservableObject {
             }
         
     }
+    
+    
     //Function to get games from api
+    @MainActor
     private func fetchGames(from url: URL) async throws -> [Game] {
         let (data, _) = try await URLSession.shared.data(from: url)
         if let games = try? JSONDecoder().decode([Game].self, from: data){
@@ -59,24 +70,22 @@ class GamesList: ObservableObject {
     
     //adds a game to user favorites
     func addFavorite(game: Game) {
-        favorites.append(game)
+        favoriteGames.addFavorite(game: game)
     }
     
     //removes a game from user favorites
     func removeFavorite(game: Game) {
-        if let index = favorites.firstIndex(where: { $0.id == game.id }) {
-            favorites.remove(at: index)
-        }
+        favoriteGames.removeFavorite(game: game)
     }
     
     //check if game is in favorite list of user
     func contains(agame: Game) -> Bool {
-        return favorites.contains(agame)
+        return favoriteGames.contains(game: agame)
     }
     
     private func save() {
         do {
-            let data = try JSONEncoder().encode(favorites)
+            let data = try JSONEncoder().encode(favoriteGames)
             try data.write(to: saveURL)
         } catch let error {
             print("Error during save of favorites \(error.localizedDescription)")

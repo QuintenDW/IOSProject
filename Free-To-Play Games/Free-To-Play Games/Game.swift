@@ -15,5 +15,4 @@ struct Game: Identifiable,Hashable,Codable {
     var genre: String
     var platform: String
     var developer: String
-
 }

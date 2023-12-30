@@ -30,7 +30,7 @@ struct GamesListDetail: View {
             .toolbar {
                 if (!gamesList.contains(agame: game)) {
                     Button {
-                        gamesList.addFavorite(game: game)
+                       gamesList.addFavorite(game: game)
                     } label: {
                         Image(systemName: "bookmark.fill")
                     }

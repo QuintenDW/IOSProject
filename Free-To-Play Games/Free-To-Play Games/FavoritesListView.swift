@@ -11,10 +11,10 @@ import SwiftUI
 struct FavoritesListView: View {
     @EnvironmentObject var gamesList: GamesList
     var body: some View {
-        if gamesList.favorites.isEmpty {
+        if gamesList.userFavorites.isEmpty {
             Text("U hebt momenteel geen favorieten").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
         } else {
-            List(gamesList.favorites) { game in
+            List(gamesList.userFavorites) { game in
                 NavigationLink(value: game) {
                     Text(game.title)
                 }

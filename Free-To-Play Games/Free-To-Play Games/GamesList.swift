@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//Viewmodel
 class GamesList: ObservableObject {
     @Published var games: Games = .none //holds current state of retrieving games progress
     @Published private (set) var favorites: [Game] = [] {
@@ -57,14 +57,19 @@ class GamesList: ObservableObject {
         case badGamesData
     }
     
+    //adds a game to user favorites
     func addFavorite(game: Game) {
         favorites.append(game)
     }
+    
+    //removes a game from user favorites
     func removeFavorite(game: Game) {
         if let index = favorites.firstIndex(where: { $0.id == game.id }) {
             favorites.remove(at: index)
         }
     }
+    
+    //check if game is in favorite list of user
     func contains(agame: Game) -> Bool {
         return favorites.contains(agame)
     }

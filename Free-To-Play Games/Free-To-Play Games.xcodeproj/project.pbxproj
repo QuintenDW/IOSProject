@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D2DB8B02B404F4600C5B9CB /* CategoryOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2DB8AF2B404F4600C5B9CB /* CategoryOverlay.swift */; };
 		7D2F39B42AF53C9C00CA2C78 /* PlatformSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F39B32AF53C9C00CA2C78 /* PlatformSelector.swift */; };
 		7D2F39B62AF53D3E00CA2C78 /* CategorySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F39B52AF53D3E00CA2C78 /* CategorySelector.swift */; };
 		7D2F39B82AF545FE00CA2C78 /* GamesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2F39B72AF545FE00CA2C78 /* GamesList.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D2DB8AF2B404F4600C5B9CB /* CategoryOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryOverlay.swift; sourceTree = SOURCE_ROOT; };
 		7D2F39B32AF53C9C00CA2C78 /* PlatformSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformSelector.swift; sourceTree = "<group>"; };
 		7D2F39B52AF53D3E00CA2C78 /* CategorySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelector.swift; sourceTree = "<group>"; };
 		7D2F39B72AF545FE00CA2C78 /* GamesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesList.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		7DE7CDAC2AED19EF004948C8 /* Free-To-Play Games */ = {
 			isa = PBXGroup;
 			children = (
+				7D2DB8AF2B404F4600C5B9CB /* CategoryOverlay.swift */,
 				7DCA01C12AED478B00E1F90E /* Category.swift */,
 				7DE7CDAD2AED19EF004948C8 /* Free_To_Play_GamesApp.swift */,
 				7DE7CDAF2AED19EF004948C8 /* ContentView.swift */,
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D2DB8B02B404F4600C5B9CB /* CategoryOverlay.swift in Sources */,
 				7DCA01BC2AED37C500E1F90E /* Platform.swift in Sources */,
 				7DE7CDBE2AED2B29004948C8 /* OptionsStore.swift in Sources */,
 				7DCA01C02AED464E00E1F90E /* CategoryOption.swift in Sources */,

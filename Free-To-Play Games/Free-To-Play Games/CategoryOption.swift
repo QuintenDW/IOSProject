@@ -17,26 +17,16 @@ struct CategoryOption: View {
             let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
             base.strokeBorder(lineWidth: Constants.border)
                 .background(base.fill(.green))
-            CategoryOverlay(category: category).padding(20)
+            CategoryOverlay(category: category).padding(Constants.padding)
         }
     }
     private struct Constants {
         static let cornerRadius: CGFloat = 12
         static let border: CGFloat = 4
+        static let padding: CGFloat = 20
     }
 }
 
-struct CategoryOverlay: View {
-    var category: Category
-    var body: some View {
-        NavigationLink(value: category) {
-            VStack {
-                Image(systemName: "poweroutlet.type.b.fill").resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
-                Text(category.rawValue.uppercased()).font(.system(size: 50)).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).minimumScaleFactor(0.01).aspectRatio(1,contentMode: .fit)
-            }.tint(.white)
-        }
-    }
-}
 
 #Preview {
     CategoryOption(Category.pve)

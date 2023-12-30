@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//viewmodel for options
 class OptionsStore: ObservableObject {
     @Published private var GameOptions = createGameOptions()
     

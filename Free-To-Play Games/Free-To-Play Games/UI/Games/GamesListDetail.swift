@@ -10,6 +10,7 @@ import SwiftUI
 
 struct GamesListDetail: View {
     @EnvironmentObject var gamesList: GamesList
+    @Environment(\.dismiss) private var dismiss
     private let selectedGame: Game
     init(game: Game) {
         self.selectedGame = game
@@ -39,6 +40,7 @@ struct GamesListDetail: View {
                 } else {
                     Button {
                         gamesList.removeFavorite(game: selectedGame)
+                        dismiss()
                     } label: {
                         Image(systemName: "bookmark.slash.fill")
                     }

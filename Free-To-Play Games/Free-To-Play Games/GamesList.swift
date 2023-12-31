@@ -83,6 +83,11 @@ class GamesList: ObservableObject {
         return favoriteGames.contains(game: agame)
     }
     
+    //used in favoritelist for onDelete
+    func removeFavoriteAt(index: IndexSet) {
+        favoriteGames.removeFavoriteAt(index: index)
+    }
+    
     private func save() {
         do {
             let data = try JSONEncoder().encode(favoriteGames)

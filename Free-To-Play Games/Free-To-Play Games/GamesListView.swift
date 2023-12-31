@@ -10,8 +10,8 @@ import SwiftUI
 struct GamesListView: View {
     @EnvironmentObject var gamesList: GamesList
     @EnvironmentObject var gameLogic: OptionsStore
-    var platform: Platform
-    var category: Category
+    let platform: Platform
+    let category: Category
     var body: some View {
         if case .none = gamesList.games {
             VStack(spacing: 20) {
@@ -22,7 +22,7 @@ struct GamesListView: View {
                 },label: {
                     Text("Haal games")
                 }).buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
-            }
+            }.navigationTitle("Overzicht")
 
         }
         if gamesList.games.isFetching {

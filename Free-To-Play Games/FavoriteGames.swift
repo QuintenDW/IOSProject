@@ -26,4 +26,8 @@ struct FavoriteGames: Codable {
     func contains(game: Game) -> Bool {
         return favorites.contains(game)
     }
+    
+    mutating func removeFavoriteAt(index: IndexSet) {
+        favorites.remove(atOffsets: index)
+    }
 }

@@ -12,7 +12,7 @@ struct CategoryOverlay: View {
     var body: some View {
         NavigationLink(value: category) {
             VStack {
-                Image(systemName: "poweroutlet.type.b.fill").resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
+                Image(systemName: category.getLogo()).resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
                 Text(category.rawValue.uppercased()).font(.system(size: 50)).fontWeight(.bold).minimumScaleFactor(0.01).aspectRatio(1,contentMode: .fit)
             }.tint(.white)
         }

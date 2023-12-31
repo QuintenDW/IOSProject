@@ -21,4 +21,32 @@ enum Category: String,CaseIterable,Codable {
     case pvp
     case pve
     case survival
+    
+    func getLogo() -> String {
+        switch self {
+        case .shooter:
+            return "figure.archery"
+        case .mmorpg:
+            return "figure.arms.open"
+        case .strategy:
+            return "map"
+        case .moba:
+            return "figure.stand.line.dotted.figure.stand"
+        case .racing:
+            return "car.rear.fill"
+        case .sports:
+            return "figure.basketball"
+        case .social:
+            return "figure.2"
+        case .sandbox:
+            return "building"
+        case .pvp:
+            return "figure.arms.open"
+        case .pve:
+            return "figure.arms.open"
+        case .survival:
+            return "figure.climbing"
+        }
+        
+    }
 }

@@ -29,6 +29,7 @@ class GamesList: ObservableObject {
     }
     private let saveURL: URL = URL.documentsDirectory.appendingPathComponent("Saved.favorites")
     
+    //retrieves games from freetogame API
     func getGames(platform: Platform,category: Category) {
         Task {
             await fetchData(selectedPlatform:platform,selectedCategory:category)
@@ -54,7 +55,6 @@ class GamesList: ObservableObject {
     
     
     //Function to get games from api
-    @MainActor
     private func fetchGames(from url: URL) async throws -> [Game] {
         let (data, _) = try await URLSession.shared.data(from: url)
         if let games = try? JSONDecoder().decode([Game].self, from: data){
@@ -83,10 +83,6 @@ class GamesList: ObservableObject {
         return favoriteGames.contains(game: agame)
     }
     
-    //used in favoritelist for onDelete
-    func removeFavoriteAt(index: IndexSet) {
-        favoriteGames.removeFavoriteAt(index: index)
-    }
     
     private func save() {
         do {

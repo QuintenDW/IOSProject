@@ -25,10 +25,13 @@ struct GamesListView: View {
             }.navigationTitle("Overzicht")
 
         }
-        if gamesList.games.isFetching {
+        else if let reason = gamesList.games.failedReason {
+            Text(reason)
+        }
+        else if gamesList.games.isFetching {
             ProgressView()
         }
-        if let list = gamesList.games.gamesList {
+        else if let list = gamesList.games.gamesList {
             List(list){ game in
                 NavigationLink(value: game) {
                     Text(game.title)

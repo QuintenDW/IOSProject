@@ -14,8 +14,7 @@ struct FavoritesListView: View {
         if gamesList.userFavorites.isEmpty {
             Text("U hebt momenteel geen favorieten").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
         } else {
-            List {
-                ForEach(gamesList.userFavorites) { game in
+            List(gamesList.userFavorites) { game in
                     NavigationLink(value: game) {
                         Text(game.title)
                             .swipeActions() {
@@ -26,7 +25,6 @@ struct FavoritesListView: View {
                                 }
                             }
                     }
-                }
             }
             .navigationDestination(for: Game.self) { game in
                 GamesListDetail(game: game).padding(20)

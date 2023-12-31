@@ -18,10 +18,13 @@ struct FavoritesListView: View {
                 ForEach(gamesList.userFavorites) { game in
                     NavigationLink(value: game) {
                         Text(game.title)
-                    }
-                }.onDelete { indexSet in
-                    withAnimation {
-                        gamesList.removeFavoriteAt(index: indexSet)
+                            .swipeActions() {
+                                Button(role: .destructive) {
+                                    gamesList.removeFavorite(game: game)
+                                } label: {
+                                    Label("Verwijder uit favorieten", systemImage: "trash.fill")
+                                }
+                            }
                     }
                 }
             }

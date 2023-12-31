@@ -13,12 +13,16 @@ struct CategoryOption: View {
         self.category = category
     }
     var body: some View {
-        ZStack {
-            let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
-            base.strokeBorder(lineWidth: Constants.border)
-                .background(base.fill(.green))
-            CategoryOverlay(category).padding(Constants.padding)
-        }
+        NavigationLink(value: category) {
+            ZStack {
+                let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
+                base.strokeBorder(.black,lineWidth: Constants.border)
+                    .background(base.fill(.green))
+                    .overlay {
+                        CategoryOverlay(category).padding(Constants.padding)
+                    }
+            }
+        }.buttonStyle(.borderless)
     }
     private struct Constants {
         static let cornerRadius: CGFloat = 12

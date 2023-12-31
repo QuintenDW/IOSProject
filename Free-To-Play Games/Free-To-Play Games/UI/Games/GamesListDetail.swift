@@ -16,7 +16,8 @@ struct GamesListDetail: View {
         self.selectedGame = game
     }
     var body: some View {
-        ScrollView {
+
+        ScrollView(.vertical) {
             Text(selectedGame.title).font(.largeTitle).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green).multilineTextAlignment(.center).padding()
             
             VStack(alignment: .leading,spacing: 20) {
@@ -47,11 +48,11 @@ struct GamesListDetail: View {
                 }
                 
             }
-        }
+        }.scrollIndicators(.hidden)
 
     }
     
 }
 #Preview {
-    GamesListDetail(game: Game(id:1,title:"overwatch 2",short_description: "lorem ipsum",genre: Category.mmorpg.rawValue,platform: Platform.pc.rawValue, developer: "Blizard")).environmentObject(GamesList())
+    GamesListDetail(game: Game(id:1,title:"overwatch 2",short_description: "lorem ipsum tekst",genre: Category.mmorpg.rawValue,platform: Platform.pc.rawValue, developer: "Blizard")).environmentObject(GamesList())
 }

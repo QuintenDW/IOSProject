@@ -28,7 +28,13 @@ struct FavoritesListView: View {
             }
             .navigationDestination(for: Game.self) { game in
                 GamesListDetail(game: game).padding(20)
+            }.toolbar {
+                ShareLink(item: gamesList.userFavorites
+                    .map{$0.title}
+                    .joined(separator: "\n"),
+                    preview: SharePreview("Versturen van favorieten"))
             }
+
         }
   
     }

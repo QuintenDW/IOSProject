@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct CategoryOverlay: View {
-    var category: Category
+    private let category: Category
+    
+    init(_ category: Category) {
+        self.category = category
+    }
     var body: some View {
         NavigationLink(value: category) {
             VStack {
-                Image(systemName: category.getLogo()).resizable().scaledToFit().aspectRatio(4,contentMode: .fit).padding()
-                Text(category.rawValue.uppercased()).font(.system(size: 50)).fontWeight(.bold).minimumScaleFactor(0.01).aspectRatio(1,contentMode: .fit)
+                Image(systemName: category.getLogo()).resizable().scaledToFit().aspectRatio(Constants.aspectRatioImage,contentMode: .fit).padding()
+                Text(category.rawValue.uppercased()).font(.system(size: Constants.fontsize)).fontWeight(.bold).minimumScaleFactor(Constants.scaleFactor).aspectRatio(Constants.aspectRatioText,contentMode: .fit)
             }.tint(.white)
         }
+    }
+    private struct Constants {
+        static let fontsize: CGFloat = 50
+        static let scaleFactor: CGFloat = 0.01
+        static let aspectRatioText: CGFloat = 1
+        static let aspectRatioImage: CGFloat = 4
     }
 }
 
 #Preview {
-    CategoryOverlay(category: Category.mmorpg)
+    CategoryOverlay(Category.mmorpg)
 }

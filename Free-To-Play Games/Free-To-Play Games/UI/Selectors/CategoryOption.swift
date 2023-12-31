@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CategoryOption: View {
-    var category: Category
+    private let category: Category
     init(_ category: Category) {
         self.category = category
     }
@@ -17,7 +17,7 @@ struct CategoryOption: View {
             let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
             base.strokeBorder(lineWidth: Constants.border)
                 .background(base.fill(.green))
-            CategoryOverlay(category: category).padding(Constants.padding)
+            CategoryOverlay(category).padding(Constants.padding)
         }
     }
     private struct Constants {

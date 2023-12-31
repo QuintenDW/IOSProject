@@ -10,33 +10,35 @@ import SwiftUI
 
 struct GamesListDetail: View {
     @EnvironmentObject var gamesList: GamesList
-    let game: Game
-    
+    private let selectedGame: Game
+    init(game: Game) {
+        self.selectedGame = game
+    }
     var body: some View {
         ScrollView {
-            Text(game.title).font(.largeTitle).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green).multilineTextAlignment(.center).padding()
+            Text(selectedGame.title).font(.largeTitle).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green).multilineTextAlignment(.center).padding()
             
             VStack(alignment: .leading,spacing: 20) {
                 Text("Beschrijving").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
-                Text(game.short_description).font(.subheadline).multilineTextAlignment(.leading)
-                Text("genre").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
-                Text(game.genre)
-                Text("developer").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
-                Text(game.developer)
+                Text(selectedGame.short_description).font(.subheadline).multilineTextAlignment(.leading)
+                Text("Genre").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
+                Text(selectedGame.genre)
+                Text("Developer").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
+                Text(selectedGame.developer)
                 Text("Platform").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
-                Text(game.platform)
+                Text(selectedGame.platform)
             }
             .navigationTitle("Details game")
             .toolbar {
-                if (!gamesList.contains(agame: game)) {
+                if (!gamesList.contains(game: selectedGame)) {
                     Button {
-                       gamesList.addFavorite(game: game)
+                       gamesList.addFavorite(game: selectedGame)
                     } label: {
                         Image(systemName: "bookmark.fill")
                     }
                 } else {
                     Button {
-                        gamesList.removeFavorite(game: game)
+                        gamesList.removeFavorite(game: selectedGame)
                     } label: {
                         Image(systemName: "bookmark.slash.fill")
                     }

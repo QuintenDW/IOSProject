@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//Viewmodel
+
 class GamesList: ObservableObject {
     
     @Published private var favoriteGames = FavoriteGames() {
@@ -29,10 +29,10 @@ class GamesList: ObservableObject {
     }
     private let saveURL: URL = URL.documentsDirectory.appendingPathComponent("Saved.favorites")
     
-    //retrieves games from freetogame API
-    func getGames(platform: Platform,category: Category) {
+    //retrieves games from freetogame API for selected platform and category
+    func getGamesFor(platform: Platform,category: Category) {
         Task {
-            await fetchData(selectedPlatform:platform,selectedCategory:category)
+            await fetchData(selectedPlatform: platform,selectedCategory: category)
         }
     }
     
@@ -79,8 +79,8 @@ class GamesList: ObservableObject {
     }
     
     //check if game is in favorite list of user
-    func contains(agame: Game) -> Bool {
-        return favoriteGames.contains(game: agame)
+    func contains(game: Game) -> Bool {
+        return favoriteGames.contains(game: game)
     }
     
     
@@ -101,7 +101,7 @@ class GamesList: ObservableObject {
         case found([Game])
         case failed(String)
         
-        var gamesList: [Game]? {
+        var list: [Game]? {
             switch self {
             case .found(let games): return games
             default: return nil

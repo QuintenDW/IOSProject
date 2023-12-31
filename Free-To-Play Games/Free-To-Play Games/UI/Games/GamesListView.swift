@@ -9,18 +9,23 @@ import SwiftUI
 
 struct GamesListView: View {
     @EnvironmentObject var gamesList: GamesList
-    @EnvironmentObject var gameLogic: OptionsStore
-    let platform: Platform
-    let category: Category
+    private let platform: Platform
+    private let category: Category
+    
+    init(platform: Platform,category: Category) {
+        self.platform = platform
+        self.category = category
+    }
+    
     var body: some View {
         if case .none = gamesList.games {
             VStack(spacing: 20) {
                 Text("Geselecteerde categorie:  \(category.rawValue)").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
                 Text("Geselecteerde platform: \(platform.rawValue)").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).foregroundStyle(.green)
                 Button(action: {
-                    gamesList.getGames(platform: platform, category: category)
+                    gamesList.getGamesFor(platform: platform, category: category)
                 },label: {
-                    Text("Haal games")
+                    Text("Haal games op")
                 }).buttonStyle(.borderedProminent).tint(.green).font(.title3).controlSize(.large)
             }.navigationTitle("Overzicht")
 
@@ -31,13 +36,15 @@ struct GamesListView: View {
         else if gamesList.games.isFetching {
             ProgressView()
         }
-        else if let list = gamesList.games.gamesList {
+        else if let list = gamesList.games.list {
             List(list){ game in
                 NavigationLink(value: game) {
                     Text(game.title)
                 }
                 
-            }.navigationDestination(for: Game.self) { game in
+            }
+            .navigationTitle("Lijst van games")
+            .navigationDestination(for: Game.self) { game in
                 GamesListDetail(game: game).padding(20)
             }
         }
@@ -49,6 +56,6 @@ struct GamesListView: View {
 
 #Preview {
     NavigationStack {
-        GamesListView(platform: Platform.pc, category: Category.mmorpg).environmentObject(GamesList()).environmentObject(OptionsStore())
+        GamesListView(platform: Platform.pc, category: Category.mmorpg).environmentObject(GamesList())
     }
 }

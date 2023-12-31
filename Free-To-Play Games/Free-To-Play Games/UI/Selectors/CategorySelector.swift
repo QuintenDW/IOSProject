@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct CategorySelector: View {
-    @EnvironmentObject var gameLogic: OptionsStore
+    let gameLogic = OptionsStore()
     @EnvironmentObject var gamesList: GamesList
-    let platform: Platform
+    private let platform: Platform
+    
+    init(platform: Platform) {
+        self.platform = platform
+    }
     var body: some View {
         ScrollView(.horizontal,showsIndicators: true) {
             LazyHStack(spacing:5) {
                 ForEach(gameLogic.categories.indices, id: \.self) {
-                    index in CategoryOption(gameLogic.categories[index]).aspectRatio(2/3,contentMode: .fit).padding([.vertical],20)
+                    index in CategoryOption(gameLogic.categories[index])
+                        .aspectRatio(2/3,contentMode: .fit)
+                        .padding([.vertical],20)
                 }
-
             }
             .navigationTitle("Categorie selectie")
             .padding([.vertical],50)
@@ -31,5 +36,5 @@ struct CategorySelector: View {
 }
 
 #Preview {
-    CategorySelector(platform: Platform.pc).environmentObject(OptionsStore()).environmentObject(GamesList())
+    CategorySelector(platform: Platform.pc).environmentObject(GamesList())
 }

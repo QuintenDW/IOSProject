@@ -8,23 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var gameLogic: OptionsStore
     var body: some View {
         VStack(alignment: .center) {
-
             NavigationStack {
                 Text("Welkom bij de \nFree-To-Play games lijst").font(.largeTitle).padding().multilineTextAlignment(.center)
                 Image(systemName: "gamecontroller.fill").imageScale(.large).font(.largeTitle)
                 Spacer()
-                
                 PlatformSelector()
                 Spacer()
-                GoToFavorites
+                favorites
             }
-            
         }
     }
-    private var GoToFavorites: some View {
+    private var favorites: some View {
         HStack {
             NavigationLink(value: "favorites") {
                 Text("Ga naar favorieten")
@@ -32,14 +28,11 @@ struct ContentView: View {
         }.navigationDestination(for: String.self) { value in
             FavoritesListView()
         }
-      
     }
-    
 }
 
 
 
 #Preview {
-    
-    ContentView().environmentObject(OptionsStore()).environmentObject(GamesList())
+    ContentView().environmentObject(GamesList())
 }

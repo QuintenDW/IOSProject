@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PlatformOption: View {
-    var platform: Platform
-    @EnvironmentObject var gameLogic: OptionsStore
+    private var platform: Platform
+    
     init(_ platform: Platform) {
         self.platform = platform
     }
@@ -22,5 +22,5 @@ struct PlatformOption: View {
 }
 
 #Preview {
-    PlatformOption(Platform.pc).environmentObject(OptionsStore())
+    PlatformOption(Platform.pc)
 }
